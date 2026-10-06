@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Circusar — Steam Key</title>
+<link rel="icon" type="image/png" href="../assets/img/logo-1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  body{min-height:100vh;display:flex;flex-direction:column}
+  .k-wrap{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px 60px}
+  .k-card{width:100%;max-width:560px;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .k-art{display:block;width:100%;aspect-ratio:3/1;object-fit:cover;border-bottom:1px solid var(--border)}
+  .k-body{padding:26px 26px 30px}
+  .k-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted)}
+  .k-title{font-size:26px;font-weight:800;line-height:1.2;margin:6px 0 10px}
+  .k-muted{color:var(--text-muted);font-size:14px}
+  .k-for{font-family:var(--mono);font-size:14px;background:var(--bg-alt);border:1px solid var(--border);border-radius:6px;padding:8px 10px;margin:12px 0 18px;word-break:break-all}
+  .k-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 18px;border-radius:8px;border:1px solid var(--text);background:var(--text);color:var(--bg);font:700 16px var(--body);cursor:pointer;text-decoration:none}
+  .k-btn.sec{background:transparent;color:var(--text);border-color:var(--border)}
+  .k-btn:disabled{opacity:.6;cursor:wait}
+  .k-key{display:flex;gap:8px;align-items:stretch;margin:16px 0 12px}
+  .k-key code{flex:1;font:700 clamp(17px,5vw,22px) var(--mono);letter-spacing:1px;text-align:center;padding:14px 8px;background:var(--bg-alt);border:1px dashed var(--text-muted);border-radius:8px;user-select:all}
+  .k-key button{width:auto;padding:0 16px;font-size:14px}
+  .k-stack{display:grid;gap:10px;margin-top:6px}
+  .k-sep{border:0;border-top:1px solid var(--border);margin:24px 0}
+  .k-row{display:flex;gap:8px;margin-top:10px}
+  .k-row input{flex:1;min-width:0;padding:11px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:15px var(--body)}
+  .k-row button{width:auto}
+  .k-msg{margin-top:12px;font-size:14px;padding:10px 12px;border-radius:6px;background:var(--bg-alt);border:1px solid var(--border)}
+  .k-msg:empty{display:none}
+  .hidden{display:none!important}
+  footer.k-foot{text-align:center;color:var(--text-muted);font-size:13px;padding:0 16px 30px}
+  footer.k-foot a{color:var(--text-muted)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="../" class="brand"><img src="../assets/img/logo-1.png" alt="" class="brand-mark"><span class="brand-word">CIRCUSAR</span></a>
+  </div>
+</header>
+
+<div class="k-wrap">
+  <main class="k-card">
+    <img class="k-art" src="../assets/img/header.png" alt="Circusar">
+    <div class="k-body">
+      <div class="k-eyebrow">Steam Key</div>
+      <h1 class="k-title" id="title">Circusar</h1>
+
+      <section id="s-start" class="hidden">
+        <div class="k-muted" id="t-for"></div>
+        <div class="k-for" id="who"></div>
+        <button class="k-btn" id="btn-get"></button>
+      </section>
+
+      <section id="s-key" class="hidden">
+        <div class="k-muted" id="t-again"></div>
+        <div class="k-key"><code id="key"></code><button class="k-btn sec" id="btn-copy"></button></div>
+        <div class="k-stack">
+          <a class="k-btn" id="btn-activate" target="_blank" rel="noopener"></a>
+          <div class="k-muted" id="t-manual" style="text-align:center"></div>
+          <a class="k-btn sec" id="btn-wish" target="_blank" rel="noopener"></a>
+        </div>
+        <hr class="k-sep">
+        <h2 style="font-size:18px;margin:0 0 4px" id="t-cov-title"></h2>
+        <div class="k-muted" id="t-cov-text"></div>
+        <div class="k-row"><input id="cov" type="url" placeholder="https://youtube.com/..."><button class="k-btn" id="btn-cov"></button></div>
+      </section>
+
+      <div class="k-msg" id="msg"></div>
+    </div>
+  </main>
+</div>
+<footer class="k-foot">Psicodart Games · <a href="../">Press kit</a></footer>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwXppdgrAugBd6X67mXtLO0Lt2a5C7CbYQWB4ZsA6LRLP18gIA9AT8YgRdmn-pZdPRH/exec";
+const STEAM_URL = "https://store.steampowered.com/app/5001170/Circusar/";
+
+const L = {
+  en:{title:"Your Circusar {p}key",for:"Reserved for",get:"Get my key",loading:"Getting your key…",copy:"Copy",copied:"Copied!",activate:"Activate on Steam",manual:"or in Steam: Games → Activate a Product on Steam",wish:"Add Circusar to your wishlist",again:"You already claimed this key, here it is again:",covT:"Made a video or stream?",covX:"Drop the link here so we can watch and share it. You're free to record and stream.",send:"Send",covOk:"Thank you! We got your link.",invalid:"This link doesn't look valid. Just reply to our email and we'll sort it out.",empty:"We're out of keys for the moment. You're on the waiting list and we'll email you as soon as we have more.",net:"Something went wrong. Please try again in a minute.",nolink:"Please open the personal link from our email.",badUrl:"Please paste a full link starting with https://"},
+  tr:{title:"Circusar {p}anahtarın",for:"Şu adres için ayrıldı",get:"Anahtarımı al",loading:"Anahtarın alınıyor…",copy:"Kopyala",copied:"Kopyalandı!",activate:"Steam'de etkinleştir",manual:"veya Steam'de: Oyunlar → Steam'de Bir Ürünü Etkinleştir",wish:"Circusar'ı istek listene ekle",again:"Bu anahtarı daha önce almıştın, işte tekrar:",covT:"Video ya da yayın yaptın mı?",covX:"Linkini buraya bırak, izleyip paylaşalım. Kayıt ve yayın tamamen serbest.",send:"Gönder",covOk:"Teşekkürler! Linkini aldık.",invalid:"Bu link geçerli görünmüyor. Mailimize yanıt vermen yeterli, hemen çözelim.",empty:"Şu an anahtarlarımız bitti. Bekleme listesindesin, yenileri gelince sana mail atacağız.",net:"Bir şeyler ters gitti. Lütfen bir dakika sonra tekrar dene.",nolink:"Lütfen mailimizdeki kişisel linki aç.",badUrl:"Lütfen https:// ile başlayan tam bir link yapıştır."},
+  es:{title:"Tu clave {p}de Circusar",for:"Reservada para",get:"Obtener mi clave",loading:"Obteniendo tu clave…",copy:"Copiar",copied:"¡Copiada!",activate:"Activar en Steam",manual:"o en Steam: Juegos → Activar un producto en Steam",wish:"Añade Circusar a tu lista de deseados",again:"Ya reclamaste esta clave, aquí la tienes de nuevo:",covT:"¿Hiciste un vídeo o directo?",covX:"Deja el enlace aquí para que podamos verlo y compartirlo. Puedes grabar y emitir libremente.",send:"Enviar",covOk:"¡Gracias! Recibimos tu enlace.",invalid:"Este enlace no parece válido. Responde a nuestro correo y lo solucionamos.",empty:"Nos hemos quedado sin claves por ahora. Estás en la lista de espera y te escribiremos en cuanto tengamos más.",net:"Algo salió mal. Inténtalo de nuevo en un minuto.",nolink:"Abre el enlace personal de nuestro correo.",badUrl:"Pega un enlace completo que empiece por https://"},
+  pt:{title:"Sua chave {p}de Circusar",for:"Reservada para",get:"Pegar minha chave",loading:"Pegando sua chave…",copy:"Copiar",copied:"Copiada!",activate:"Ativar na Steam",manual:"ou na Steam: Jogos → Ativar um produto na Steam",wish:"Adicione Circusar à sua lista de desejos",again:"Você já resgatou esta chave, aqui está de novo:",covT:"Fez um vídeo ou live?",covX:"Deixe o link aqui para assistirmos e compartilharmos. Pode gravar e transmitir à vontade.",send:"Enviar",covOk:"Obrigado! Recebemos seu link.",invalid:"Este link não parece válido. Responda nosso e-mail e resolvemos.",empty:"As chaves acabaram por enquanto. Você está na lista de espera e vamos te avisar por e-mail.",net:"Algo deu errado. Tente de novo em um minuto.",nolink:"Abra o link pessoal do nosso e-mail.",badUrl:"Cole um link completo começando com https://"},
+  fr:{title:"Ta clé {p}Circusar",for:"Réservée pour",get:"Obtenir ma clé",loading:"Récupération de ta clé…",copy:"Copier",copied:"Copiée !",activate:"Activer sur Steam",manual:"ou dans Steam : Jeux → Activer un produit sur Steam",wish:"Ajoute Circusar à ta liste de souhaits",again:"Tu as déjà récupéré cette clé, la revoici :",covT:"Tu as fait une vidéo ou un live ?",covX:"Laisse le lien ici pour qu'on puisse le regarder et le partager. Tu es libre d'enregistrer et de streamer.",send:"Envoyer",covOk:"Merci ! Nous avons bien reçu ton lien.",invalid:"Ce lien ne semble pas valide. Réponds simplement à notre mail et on s'en occupe.",empty:"Nous n'avons plus de clés pour le moment. Tu es sur la liste d'attente, on t'écrit dès qu'on en a.",net:"Un problème est survenu. Réessaie dans une minute.",nolink:"Ouvre le lien personnel reçu dans notre mail.",badUrl:"Colle un lien complet commençant par https://"},
+  de:{title:"Dein Circusar-{p}Key",for:"Reserviert für",get:"Meinen Key holen",loading:"Key wird geholt…",copy:"Kopieren",copied:"Kopiert!",activate:"Auf Steam aktivieren",manual:"oder in Steam: Spiele → Ein Produkt bei Steam aktivieren",wish:"Circusar auf die Wunschliste setzen",again:"Du hast diesen Key schon abgeholt, hier ist er noch einmal:",covT:"Video oder Stream gemacht?",covX:"Lass uns den Link hier, damit wir ihn ansehen und teilen können. Aufnehmen und Streamen ist erlaubt.",send:"Senden",covOk:"Danke! Wir haben deinen Link.",invalid:"Dieser Link scheint ungültig zu sein. Antworte einfach auf unsere Mail.",empty:"Gerade sind keine Keys mehr da. Du stehst auf der Warteliste und bekommst eine Mail, sobald es neue gibt.",net:"Etwas ist schiefgelaufen. Bitte versuch es in einer Minute erneut.",nolink:"Bitte öffne den persönlichen Link aus unserer Mail.",badUrl:"Bitte einen vollständigen Link mit https:// einfügen."},
+  it:{title:"La tua chiave {p}di Circusar",for:"Riservata per",get:"Ottieni la mia chiave",loading:"Recupero della chiave…",copy:"Copia",copied:"Copiata!",activate:"Attiva su Steam",manual:"oppure in Steam: Giochi → Attiva un prodotto su Steam",wish:"Aggiungi Circusar alla lista dei desideri",again:"Hai già riscattato questa chiave, eccola di nuovo:",covT:"Hai fatto un video o una live?",covX:"Lascia qui il link così possiamo guardarlo e condividerlo. Sei libero di registrare e trasmettere.",send:"Invia",covOk:"Grazie! Abbiamo ricevuto il tuo link.",invalid:"Questo link non sembra valido. Rispondi alla nostra email e sistemiamo.",empty:"Per ora le chiavi sono finite. Sei in lista d'attesa e ti scriveremo appena ne avremo altre.",net:"Qualcosa è andato storto. Riprova tra un minuto.",nolink:"Apri il link personale della nostra email.",badUrl:"Incolla un link completo che inizi con https://"},
+  ru:{title:"Твой ключ {p}Circusar",for:"Зарезервирован для",get:"Получить ключ",loading:"Получаем ключ…",copy:"Копировать",copied:"Скопировано!",activate:"Активировать в Steam",manual:"или в Steam: Игры → Активировать в Steam",wish:"Добавить Circusar в список желаемого",again:"Ты уже получил этот ключ, вот он снова:",covT:"Снял видео или провёл стрим?",covX:"Оставь ссылку здесь, чтобы мы посмотрели и поделились. Записывать и стримить можно свободно.",send:"Отправить",covOk:"Спасибо! Ссылка получена.",invalid:"Ссылка выглядит недействительной. Просто ответь на наше письмо, и мы поможем.",empty:"Ключи пока закончились. Ты в листе ожидания, мы напишем, как только появятся новые.",net:"Что-то пошло не так. Попробуй ещё раз через минуту.",nolink:"Открой персональную ссылку из нашего письма.",badUrl:"Вставь полную ссылку, начинающуюся с https://"},
+  pl:{title:"Twój klucz {p}do Circusar",for:"Zarezerwowany dla",get:"Odbierz klucz",loading:"Pobieranie klucza…",copy:"Kopiuj",copied:"Skopiowano!",activate:"Aktywuj na Steamie",manual:"lub w Steamie: Gry → Aktywuj produkt na Steam",wish:"Dodaj Circusar do listy życzeń",again:"Ten klucz został już odebrany, oto on ponownie:",covT:"Nagrałeś film albo stream?",covX:"Zostaw tu link, żebyśmy mogli obejrzeć i udostępnić. Możesz swobodnie nagrywać i streamować.",send:"Wyślij",covOk:"Dzięki! Mamy Twój link.",invalid:"Ten link wygląda na nieprawidłowy. Odpisz na naszego maila, a pomożemy.",empty:"Chwilowo skończyły się klucze. Jesteś na liście oczekujących, napiszemy, gdy pojawią się nowe.",net:"Coś poszło nie tak. Spróbuj ponownie za minutę.",nolink:"Otwórz osobisty link z naszego maila.",badUrl:"Wklej pełny link zaczynający się od https://"},
+  ja:{title:"Circusar {p}キー",for:"お受け取り先",get:"キーを受け取る",loading:"キーを取得中…",copy:"コピー",copied:"コピーしました",activate:"Steamで有効化",manual:"またはSteamで：ゲーム → Steamでプロダクトを有効化",wish:"Circusarをウィッシュリストに追加",again:"このキーは受け取り済みです。再表示します：",covT:"動画や配信をされましたか？",covX:"リンクをこちらにお送りください。拝見してシェアさせていただきます。録画・配信は自由です。",send:"送信",covOk:"ありがとうございます！リンクを受け取りました。",invalid:"このリンクは無効のようです。メールにご返信いただければ対応いたします。",empty:"現在キーの在庫がありません。ウェイティングリストに登録しましたので、追加次第ご連絡します。",net:"エラーが発生しました。少し時間をおいて再度お試しください。",nolink:"メールに記載された専用リンクを開いてください。",badUrl:"https:// から始まるリンクを貼り付けてください。"},
+  ko:{title:"Circusar {p}키",for:"받는 분",get:"키 받기",loading:"키를 가져오는 중…",copy:"복사",copied:"복사됨!",activate:"Steam에서 활성화",manual:"또는 Steam: 게임 → Steam에서 제품 활성화",wish:"Circusar를 찜 목록에 추가",again:"이미 받으신 키입니다. 다시 보여드릴게요:",covT:"영상이나 방송을 하셨나요?",covX:"링크를 남겨 주시면 보고 공유하겠습니다. 녹화와 방송 모두 자유입니다.",send:"보내기",covOk:"감사합니다! 링크를 받았습니다.",invalid:"유효하지 않은 링크 같습니다. 메일에 답장 주시면 해결해 드릴게요.",empty:"현재 키가 모두 소진되었습니다. 대기 명단에 등록되었으며, 추가되면 메일로 알려드릴게요.",net:"문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",nolink:"메일에 있는 개인 링크를 열어 주세요.",badUrl:"https:// 로 시작하는 전체 링크를 붙여 넣어 주세요."}
+};
+const POOL_LABEL = {playtest:{en:"Playtest ",tr:"Playtest ",ja:"プレイテスト",ko:"플레이테스트 "},demo:{en:"Demo ",tr:"Demo "}};
+
+const q = new URLSearchParams(location.search);
+const lang = (q.get("l") || navigator.language || "en").slice(0,2).toLowerCase();
+const T = L[lang] || L.en;
+const pool = q.get("c") || "playtest";
+const $ = id => document.getElementById(id);
+document.documentElement.lang = L[lang] ? lang : "en";
+
+function decodeEmail(e){ try{ e=e.replace(/-/g,"+").replace(/_/g,"/"); while(e.length%4) e+="="; return decodeURIComponent(escape(atob(e))); }catch(_){ return ""; } }
+const email = decodeEmail(q.get("e") || "");
+const token = q.get("t") || "";
+const pl = (POOL_LABEL[pool] || {});
+$("title").textContent = T.title.replace("{p}", pl[lang] ?? pl.en ?? "");
+function msg(t){ $("msg").textContent = t || ""; }
+
+async function api(params){
+  const u = API_URL + "?" + new URLSearchParams({...params, e:q.get("e"), t:token, c:pool});
+  const r = await fetch(u, {redirect:"follow"});
+  return r.json();
+}
+
+function showKey(key, again){
+  $("s-start").classList.add("hidden"); $("s-key").classList.remove("hidden");
+  $("key").textContent = key;
+  $("t-again").textContent = again ? T.again : "";
+  $("btn-activate").href = "https://store.steampowered.com/account/registerkey?key=" + encodeURIComponent(key);
+  try{ localStorage.setItem("circusar_key_" + pool, key); }catch(_){}
+}
+
+$("t-for").textContent = T.for; $("btn-get").textContent = T.get; $("btn-copy").textContent = T.copy;
+$("btn-activate").textContent = T.activate; $("t-manual").textContent = T.manual;
+$("btn-wish").textContent = T.wish; $("btn-wish").href = STEAM_URL;
+$("t-cov-title").textContent = T.covT; $("t-cov-text").textContent = T.covX; $("btn-cov").textContent = T.send;
+
+if (!email || !token) { msg(T.nolink); }
+else {
+  $("who").textContent = email;
+  $("s-start").classList.remove("hidden");
+}
+
+$("btn-get").onclick = async () => {
+  const b = $("btn-get"); b.disabled = true; b.textContent = T.loading; msg("");
+  try{
+    const r = await api({a:"claim"});
+    if (r.ok) showKey(r.key, r.again);
+    else msg(r.error === "invalid" ? T.invalid : r.error === "empty" ? T.empty : T.net);
+  }catch(_){ msg(T.net); }
+  b.disabled = false; b.textContent = T.get;
+};
+$("btn-copy").onclick = async () => {
+  try{ await navigator.clipboard.writeText($("key").textContent); }catch(_){ const r=document.createRange(); r.selectNodeContents($("key")); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
+  $("btn-copy").textContent = T.copied; setTimeout(()=>$("btn-copy").textContent = T.copy, 1500);
+};
+$("btn-cov").onclick = async () => {
+  const url = $("cov").value.trim();
+  if (!/^https?:\/\/\S+$/i.test(url)) { msg(T.badUrl); return; }
+  try{ const r = await api({a:"coverage", url}); msg(r.ok ? T.covOk : T.net); if (r.ok) $("cov").value = ""; }catch(_){ msg(T.net); }
+};
+</script>
+</body>
+</html>
