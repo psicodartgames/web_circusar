@@ -81,6 +81,7 @@
         <ul class="k-list" id="cov-list"></ul>
       </section>
 
+      <a class="k-btn sec hidden" id="btn-kit" href="../" target="_blank" rel="noopener" style="margin-top:12px"></a>
       <div class="k-msg" id="msg"></div>
     </div>
   </main>
@@ -105,17 +106,17 @@ const L = {
   ko:{title:"Circusar {p}키",for:"받는 분",get:"키 받기",loading:"키를 가져오는 중…",copy:"복사",copied:"복사됨!",activate:"Steam에서 활성화",manual:"또는 Steam: 게임 → Steam에서 제품 활성화",wish:"Circusar를 찜 목록에 추가",again:"이미 받으신 키입니다. 다시 보여드릴게요:",covT:"영상이나 방송을 하셨나요?",covX:"링크를 남겨 주시면 보고 공유하겠습니다. 녹화와 방송 모두 자유입니다.",send:"보내기",covOk:"감사합니다! 링크를 받았습니다.",invalid:"유효하지 않은 링크 같습니다. 메일에 답장 주시면 해결해 드릴게요.",empty:"현재 키가 모두 소진되었습니다. 대기 명단에 등록되었으며, 추가되면 메일로 알려드릴게요.",net:"문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",nolink:"메일에 있는 개인 링크를 열어 주세요.",badUrl:"https:// 로 시작하는 전체 링크를 붙여 넣어 주세요."}
 };
 const L2 = {
-  en:{hint:"Key copied! If the Steam window opened, paste it with Ctrl+V.",web:"activate in browser",long:"Almost there, waking up our key server…",sending:"Sending…",dup:"We already have this link, thanks!",list:"Links you've sent:"},
-  tr:{hint:"Anahtar kopyalandı! Steam penceresi açıldıysa Ctrl+V ile yapıştır.",web:"tarayıcıda etkinleştir",long:"Neredeyse hazır, key sunucumuz uyanıyor…",sending:"Gönderiliyor…",dup:"Bu link zaten bizde, teşekkürler!",list:"Gönderdiğin linkler:"},
-  es:{hint:"¡Clave copiada! Si se abrió Steam, pégala con Ctrl+V.",web:"activar en el navegador",long:"Casi listo, despertando nuestro servidor de claves…",sending:"Enviando…",dup:"Ya tenemos este enlace, ¡gracias!",list:"Enlaces que has enviado:"},
-  pt:{hint:"Chave copiada! Se a Steam abriu, cole com Ctrl+V.",web:"ativar no navegador",long:"Quase lá, acordando nosso servidor de chaves…",sending:"Enviando…",dup:"Já temos este link, obrigado!",list:"Links que você enviou:"},
-  fr:{hint:"Clé copiée ! Si Steam s'est ouvert, colle-la avec Ctrl+V.",web:"activer dans le navigateur",long:"Presque prêt, notre serveur de clés se réveille…",sending:"Envoi…",dup:"Nous avons déjà ce lien, merci !",list:"Liens envoyés :"},
-  de:{hint:"Key kopiert! Wenn Steam geöffnet wurde, mit Strg+V einfügen.",web:"im Browser aktivieren",long:"Gleich geschafft, unser Key-Server wacht auf…",sending:"Wird gesendet…",dup:"Diesen Link haben wir schon, danke!",list:"Deine gesendeten Links:"},
-  it:{hint:"Chiave copiata! Se si è aperto Steam, incollala con Ctrl+V.",web:"attiva nel browser",long:"Quasi pronto, stiamo svegliando il server delle chiavi…",sending:"Invio…",dup:"Abbiamo già questo link, grazie!",list:"Link che hai inviato:"},
-  ru:{hint:"Ключ скопирован! Если открылся Steam, вставь его через Ctrl+V.",web:"активировать в браузере",long:"Почти готово, будим сервер ключей…",sending:"Отправка…",dup:"Эта ссылка у нас уже есть, спасибо!",list:"Отправленные ссылки:"},
-  pl:{hint:"Klucz skopiowany! Jeśli otworzył się Steam, wklej go przez Ctrl+V.",web:"aktywuj w przeglądarce",long:"Prawie gotowe, budzimy serwer kluczy…",sending:"Wysyłanie…",dup:"Mamy już ten link, dzięki!",list:"Wysłane linki:"},
-  ja:{hint:"キーをコピーしました。Steamが開いたらCtrl+Vで貼り付けてください。",web:"ブラウザで有効化",long:"まもなく完了します。キーサーバーを起動中…",sending:"送信中…",dup:"このリンクは受け取り済みです。ありがとうございます！",list:"送信済みのリンク："},
-  ko:{hint:"키가 복사되었습니다! Steam이 열렸다면 Ctrl+V로 붙여 넣으세요.",web:"브라우저에서 활성화",long:"거의 다 됐어요, 키 서버를 깨우는 중…",sending:"보내는 중…",dup:"이미 받은 링크입니다. 감사합니다!",list:"보낸 링크:"}
+  en:{kit:"🎬 Trailer, screenshots & logos (press kit)",hint:"Key copied! If the Steam window opened, paste it with Ctrl+V.",web:"activate in browser",long:"Almost there, waking up our key server…",sending:"Sending…",dup:"We already have this link, thanks!",list:"Links you've sent:"},
+  tr:{kit:"🎬 Fragman, ekran görüntüleri ve logolar (basın kiti)",hint:"Anahtar kopyalandı! Steam penceresi açıldıysa Ctrl+V ile yapıştır.",web:"tarayıcıda etkinleştir",long:"Neredeyse hazır, key sunucumuz uyanıyor…",sending:"Gönderiliyor…",dup:"Bu link zaten bizde, teşekkürler!",list:"Gönderdiğin linkler:"},
+  es:{kit:"🎬 Tráiler, capturas y logos (press kit)",hint:"¡Clave copiada! Si se abrió Steam, pégala con Ctrl+V.",web:"activar en el navegador",long:"Casi listo, despertando nuestro servidor de claves…",sending:"Enviando…",dup:"Ya tenemos este enlace, ¡gracias!",list:"Enlaces que has enviado:"},
+  pt:{kit:"🎬 Trailer, screenshots e logos (press kit)",hint:"Chave copiada! Se a Steam abriu, cole com Ctrl+V.",web:"ativar no navegador",long:"Quase lá, acordando nosso servidor de chaves…",sending:"Enviando…",dup:"Já temos este link, obrigado!",list:"Links que você enviou:"},
+  fr:{kit:"🎬 Trailer, captures et logos (press kit)",hint:"Clé copiée ! Si Steam s'est ouvert, colle-la avec Ctrl+V.",web:"activer dans le navigateur",long:"Presque prêt, notre serveur de clés se réveille…",sending:"Envoi…",dup:"Nous avons déjà ce lien, merci !",list:"Liens envoyés :"},
+  de:{kit:"🎬 Trailer, Screenshots & Logos (Presskit)",hint:"Key kopiert! Wenn Steam geöffnet wurde, mit Strg+V einfügen.",web:"im Browser aktivieren",long:"Gleich geschafft, unser Key-Server wacht auf…",sending:"Wird gesendet…",dup:"Diesen Link haben wir schon, danke!",list:"Deine gesendeten Links:"},
+  it:{kit:"🎬 Trailer, screenshot e loghi (press kit)",hint:"Chiave copiata! Se si è aperto Steam, incollala con Ctrl+V.",web:"attiva nel browser",long:"Quasi pronto, stiamo svegliando il server delle chiavi…",sending:"Invio…",dup:"Abbiamo già questo link, grazie!",list:"Link che hai inviato:"},
+  ru:{kit:"🎬 Трейлер, скриншоты и логотипы (пресс-кит)",hint:"Ключ скопирован! Если открылся Steam, вставь его через Ctrl+V.",web:"активировать в браузере",long:"Почти готово, будим сервер ключей…",sending:"Отправка…",dup:"Эта ссылка у нас уже есть, спасибо!",list:"Отправленные ссылки:"},
+  pl:{kit:"🎬 Zwiastun, screenshoty i logo (press kit)",hint:"Klucz skopiowany! Jeśli otworzył się Steam, wklej go przez Ctrl+V.",web:"aktywuj w przeglądarce",long:"Prawie gotowe, budzimy serwer kluczy…",sending:"Wysyłanie…",dup:"Mamy już ten link, dzięki!",list:"Wysłane linki:"},
+  ja:{kit:"🎬 トレーラー・スクリーンショット・ロゴ（プレスキット）",hint:"キーをコピーしました。Steamが開いたらCtrl+Vで貼り付けてください。",web:"ブラウザで有効化",long:"まもなく完了します。キーサーバーを起動中…",sending:"送信中…",dup:"このリンクは受け取り済みです。ありがとうございます！",list:"送信済みのリンク："},
+  ko:{kit:"🎬 트레일러, 스크린샷, 로고 (프레스 키트)",hint:"키가 복사되었습니다! Steam이 열렸다면 Ctrl+V로 붙여 넣으세요.",web:"브라우저에서 활성화",long:"거의 다 됐어요, 키 서버를 깨우는 중…",sending:"보내는 중…",dup:"이미 받은 링크입니다. 감사합니다!",list:"보낸 링크:"}
 };
 for (const k in L2) Object.assign(L[k], L2[k]);
 const POOL_LABEL = {playtest:{en:"Playtest ",ja:"プレイテスト",ko:"플레이테스트 "},demo:{en:"Demo ",ja:"デモ",ko:"데모 "},game:{en:""}};
@@ -183,12 +184,13 @@ function covMsg(text, isErr){ const m = $("cov-msg"); m.textContent = text; m.cl
 
 $("t-for").textContent = T.for; $("btn-get").textContent = T.get; $("btn-copy").textContent = T.copy;
 $("btn-activate").textContent = "▶ " + T.activate; $("t-manual").textContent = T.manual; $("lnk-web").textContent = T.web;
-$("btn-wish").textContent = "♥ " + T.wish;
+$("btn-wish").textContent = "♥ " + T.wish; $("btn-kit").textContent = T.kit;
 $("t-cov-title").textContent = T.covT; $("t-cov-text").textContent = T.covX; $("btn-cov").textContent = T.send; $("t-cov-list").textContent = T.list;
 
 if (!email || !token) { msg(T.nolink); }
 else {
   $("who").textContent = email;
+  $("btn-kit").classList.remove("hidden");
   const cached = store("key");
   if (cached) showKey(cached, true);
   else {
