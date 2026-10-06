@@ -112,7 +112,7 @@ $("title").textContent = T.title.replace("{p}", pl[lang] ?? pl.en ?? "");
 function msg(t){ $("msg").textContent = t || ""; }
 
 async function api(params){
-  const u = API_URL + "?" + new URLSearchParams({...params, e:q.get("e"), t:token, c:pool});
+  const u = API_URL + "?" + new URLSearchParams({...params, e:q.get("e"), t:token, pool:pool});
   const r = await fetch(u, {redirect:"follow"});
   return r.json();
 }
